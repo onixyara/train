@@ -13,6 +13,8 @@ int main()
         
         // int weight;
         // std::cin >> weight;
+        // random shit
+
         
         for (int i = 0; i < 20; i++)
         {
