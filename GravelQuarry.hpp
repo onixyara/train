@@ -1,3 +1,4 @@
+#pragma once
 #include "Formation.hpp"
 
 class GravelQuarry

@@ -7,9 +7,11 @@ Wagon::Wagon(int name, int value)
     m_capacity = value;
 }
 
-void Wagon::printCapasity()
+void Wagon::printCapacity()
 {
-    std::cout << "Wagon" << m_name << ", capacity = " << m_capacity;
+    double percents = m_capacity / ( m_maxCapacity / 100.0l);
+
+    std::cout << "[ Wagon" << m_name << ", filled by = " << percents << "%" << " ]";
 }
 
 void Wagon::fillWagon(int value)

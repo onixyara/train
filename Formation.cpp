@@ -3,15 +3,9 @@
 
 void Formation::addWagon(Wagon wagon)
 {
-    if (train.size() < 5)
-    {
-        m_trainCapacity += wagon.m_capacity;
-        train.push_back(wagon);
-    }
-    else
-    {
-        releaseFormation();
-    }
+    m_trainCapacity = m_trainCapacity + wagon.m_capacity;
+    train.push_back(wagon);
+    std::cout << "Wagon added to branch " << m_name << std::endl;
 }
 
 void Formation::printCapacity(int name)
@@ -20,7 +14,7 @@ void Formation::printCapacity(int name)
     {
         if (train[i].m_name == name)
         {
-            train[i].printCapasity();
+            train[i].printCapacity();
         }
     }
 }
@@ -33,15 +27,21 @@ void Formation::printFormation()
     }
     for ( int i = 0; i < train.size(); i++)
     {
-        train[i].printCapasity();
+        train[i].printCapacity();
+        std::cout << std::endl;
     }
 }
 
 void Formation::releaseFormation()
 {
-    std::cout << "Formation leaving gravel quarry" << std::endl;
-    
+    double percents = m_trainCapacity / ( MAX_CAPACITY / 100.0l);
+
+    std::cout << "Formation " << m_name << " leaving gravel quarry" << std::endl;
+
     printFormation();
+    std::cout << "Formation is loaded by = " << percents << "%" << std::endl;
+    std::cout << std::endl;
     train.clear();
+    m_trainCapacity = 0;
 }
 
