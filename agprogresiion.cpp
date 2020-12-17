@@ -14,6 +14,12 @@ int main() {
     std::cout << "Enter amount of numbers in progression: " << std::endl;
     std::cin >> n;
 
+    if (n < 3)
+    {
+        std::cout << "Amount must be 3 or more!" << std::endl;
+        return 0;
+    }
+
     std::cout << "Enter numbers: " << std::endl;
 
     for (int i = 0; i < n; i++) {
@@ -33,9 +39,9 @@ int main() {
         std::cout << "Out of the range" << std::endl;
         return 0;
     }
-    if(range < 3)
+    if(range < 2)
     {
-        std::cout << "choose range from more then 3 numbers" << std::endl;
+        std::cout << "Choose range from more then 3 numbers" << std::endl;
         return 0;
     }
     std::vector<int> toCheck;
@@ -89,14 +95,16 @@ bool is_geometric(std::vector<int> arr, int count) {
             }
         }
     }
-       int ratio = arr[1] / (arr[0]);
+    int ratio = arr[1] / (arr[0]);
 
-       for (int i = 1; i < arr.size() - 1; i++)
-       {
-           if ((arr[i] / (arr[i - 1])) != ratio)
-           {
-               return false;
-           }
+    for (int i = 1; i < arr.size(); i++)
+    {
+        double rat = (double)arr[i] / (double)arr[i -1];
+
+        if (rat != ratio)
+        {
+            return false;
         }
-       return true;
-   }
+    }
+    return true;
+}
